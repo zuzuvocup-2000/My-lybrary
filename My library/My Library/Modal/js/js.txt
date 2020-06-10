@@ -1,0 +1,27 @@
+// Khai bao bien
+
+$btn_modal = $('.btn-modal-general'),
+
+
+// Function
+
+
+HT.modal_review = function() {
+        if ($btn_modal.elExists) {
+            let data_modal = '';
+            $btn_modal.click(function() {
+                let _this = $(this);
+                data_modal = _this.attr('href');
+                console.log(data_modal)
+                $(data_modal).addClass('enable');
+            })
+            $('.modal').add($('.modal-close')).add($('.btn-cancel')).click(function() {
+                $(data_modal).removeClass('enable');
+            })
+
+            $('.modal-content-review').click(function(e) {
+                e.stopPropagation();
+            })
+        }
+
+    }

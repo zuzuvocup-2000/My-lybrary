@@ -1,0 +1,35 @@
+$count_down = $('.countdown'),
+
+
+
+
+
+
+// Count down
+
+    HT.countdown = function() {
+        $count_down.each(function() {
+            let _this = $(this);
+            let date = _this.attr('data-start');
+            date = new Date(date).getTime();
+
+            let x = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = date - now;
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                let html = '';
+                html = html + '<div class="countdown_time ">';
+                html = html + '<div class="days">' + days + '</div>';
+                html = html + '<div class="hours">' + hours + '</div>';
+                html = html + '<div class="minutes">' + minutes + '</div>';
+                html = html + '<div class="seconds">' + seconds + '</div>';
+                html = html + '</div>';
+
+                _this.html(html);
+            }, 1000)
+        })
+    }
